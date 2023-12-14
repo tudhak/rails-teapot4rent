@@ -1,1 +1,35 @@
-<h1>My items</h1>
+<div class="container m-4">
+
+  <h1 class="mb-4">My teapots</h1>
+
+  <%= link_to 'Add a teapot', new_teapot_path, class:"btn btn-primary mb-4" %>
+
+    <div class="teapot-grid">
+
+      <% @teapots.each do |teapot| %>
+
+        <%= link_to teapot_path(teapot) do %>
+          <div class="card mb-3 teapot-container" style="width: 400px;">
+            <% teapot.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, crop: :fill, class:"teapot-img border-bottom" %>
+            <% end %>
+            <div class="card-body">
+              <h5 class="card-title"><strong><%= teapot.style %></strong></h5>
+              <p class="card-text"><%= teapot.description %></p>
+              <p class="card-text">Price per day: <%= teapot.price_per_day.round %> euros</p>
+              <p class="card-text"><%= teapot.user.first_name %> <%= teapot.user.last_name %></p>
+            </div>
+            <%= link_to teapot_path(teapot), class: "text-decoration-none text-black teapot-delete", data: {turbo_method: :delete, turbo_confirm: "Do you want to delete this teapot?"} do %>
+              <i class="fa-solid fa-trash"></i>
+            <% end %>
+            <%= link_to edit_teapot_path(teapot), class: "text-decoration-none text-black teapot-edit" do %>
+              <i class="fa-solid fa-pen"></i>
+            <% end %>
+          </div>
+        <% end %>
+
+      <% end %>
+
+    </div>
+
+</div>

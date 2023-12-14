@@ -1,0 +1,29 @@
+.teapot-img {
+  height: 300px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.teapot-container {
+  position: relative;
+}
+
+.teapot-delete {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+}
+
+.teapot-edit {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  font-size: 1.2rem;
+}
+
+.teapot-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-gap: 16px;
+}

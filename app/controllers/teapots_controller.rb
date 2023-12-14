@@ -1,5 +1,5 @@
 class TeapotsController < ApplicationController
-  before_action :set_teapot, only: [:show, :edit, :destroy]
+  before_action :set_teapot, only: [:show, :edit, :update, :destroy]
 
   def index
     @teapots = Teapot.where(user: current_user)
@@ -13,7 +13,7 @@ class TeapotsController < ApplicationController
   end
 
   def create
-    @teapot.new(teapot_params)
+    @teapot = Teapot.new(teapot_params)
     @teapot.user = current_user
     if @teapot.save
       redirect_to teapot_path(@teapot)
@@ -26,8 +26,7 @@ class TeapotsController < ApplicationController
   end
 
   def update
-    @teapot.update(teapot_params)
-    if @teapot.update
+    if @teapot.update(teapot_params)
       redirect_to teapot_path(@teapot)
     else
       render :edit, status: :unprocessable_entity
@@ -46,6 +45,6 @@ class TeapotsController < ApplicationController
   end
 
   def teapot_params
-    params.require(:teapot).permit(:style, :description, :price_per_day)
+    params.require(:teapot).permit(:style, :description, :price_per_day, photos: [])
   end
 end
