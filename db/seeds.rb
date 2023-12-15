@@ -23,7 +23,13 @@ puts "Destroying users..."
 puts "Creating users"
 
 user1 = User.create(first_name: "Jonathan", last_name: "Lagache", email: "jlagache@wanadoo.fr", password: "abc123")
+user1.photo.attach(io: URI.open("https://images.pexels.com/photos/769772/pexels-photo-769772.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                      filename: "user1.jpg", content_type: "image/jpg")
+
+
 user2 = User.create(first_name: "Ophélie", last_name: "Debranque", email: "odebranque@yahoo.fr", password: "def456")
+user2.photo.attach(io: URI.open("https://images.pexels.com/photos/5876695/pexels-photo-5876695.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                      filename: "user1.jpg", content_type: "image/jpg")
 
 puts "Users successfully created."
 

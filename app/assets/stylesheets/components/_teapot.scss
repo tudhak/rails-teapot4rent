@@ -1,5 +1,5 @@
 .teapot-img {
-  height: 300px;
+  height: 250px;
   width: 100%;
   object-fit: cover;
 }
@@ -26,4 +26,9 @@
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 16px;
+}
+
+.teapot-text {
+  color: #2E2412;
+  text-decoration: none;
 }
