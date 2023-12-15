@@ -6,7 +6,7 @@
 
         <div class="card mb-3 teapot-container" style="width: 400px;">
           <% @teapot.photos.each do |photo| %>
-            <%= cl_image_tag photo.key, crop: :fill, class:"teapot-img border-bottom" %>
+            <%= cl_image_tag photo.key, crop: :fill, class:"card-img-top border-bottom" %>
           <% end %>
           <div class="card-body">
             <h5 class="card-title"><strong><%= @teapot.style %></strong></h5>
