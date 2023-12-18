@@ -6,6 +6,7 @@
 
 .teapot-container {
   position: relative;
+  margin-bottom: 20px;
 }
 
 .teapot-delete {
@@ -22,14 +23,11 @@
   font-size: 1.2rem;
 }
 
-.teapot-grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  grid-gap: 16px;
-  grid-auto-rows: 1fr;
-}
-
 .teapot-text {
   color: #2E2412;
   text-decoration: none;
+}
+
+.card-content {
+  min-height: 150px;
 }
