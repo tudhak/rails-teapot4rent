@@ -2,6 +2,8 @@ class BookingsController < ApplicationController
   before_action :set_teapot, only: [:create]
 
   def index
+    @bookings = Booking.where(user: current_user)
+    @my_booked_teapots = Booking.where(teapot: Teapot.where(user: current_user))
   end
 
   def show
@@ -13,7 +15,8 @@ class BookingsController < ApplicationController
     @booking.user = current_user
     @booking.teapot = @teapot
     @booking.status = "pending"
-    if @booking.save
+    @booking.total_price = (@booking.end_date - @booking.start_date) * @teapot.price_per_day
+    if @booking.save!
       redirect_to booking_path(@booking)
     else
       render partial: "form", locals: { teapot: @teapot, booking: @booking }, status: :unprocessable_entity
@@ -21,6 +24,9 @@ class BookingsController < ApplicationController
   end
 
   def destroy
+    @booking = Booking.find(params[:id])
+    @booking.destroy
+    redirect_to bookings_path, status: :see_other
   end
 
   private

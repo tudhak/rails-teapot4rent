@@ -14,7 +14,7 @@ export default class extends Controller {
       const duration = (end - start) / (1000 * 60 * 60 * 24);
       const totalPrice = duration * this.pricePerDayTarget.value;
       const day = duration > 1 ? "days" : "day";
-      this.priceContainerTarget.classList.toggle("d-none");
+      this.priceContainerTarget.classList.remove("d-none");
       this.durationDisplayTarget.innerText = `You will send a booking request for ${this.teapotStyleTarget.value} for ${duration} ${day}.`;
       this.priceDisplayTarget.innerText = `Your booking will cost ${totalPrice} euros.`;
       this.durationDisplayTarget.style.fontWeight = "bold";

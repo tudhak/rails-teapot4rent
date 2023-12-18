@@ -4,7 +4,7 @@
 
     <div class="col-lg-4 col-sm-8">
 
-      <%= simple_form_for booking do |f| %>
+      <%= simple_form_for [teapot, booking] do |f| %>
         <%= f.input :start_date,
                     as: :string,
                     label: false,
@@ -27,8 +27,8 @@
         <input type="hidden" value="<%= teapot.price_per_day %>" data-booking-price-target="pricePerDay">
         <input type="hidden" value="<%= teapot.style %>" data-booking-price-target="teapotStyle">
         <div data-booking-price-target="priceContainer" class="d-none my-3">
-          <p data-booking-price-target="durationDisplay" class="mb-3 text-center"></p>
-          <p data-booking-price-target="priceDisplay" class="text-center"></p>
+          <p data-booking-price-target="durationDisplay" class="mb-3 px-2 text-center"></p>
+          <p data-booking-price-target="priceDisplay" class="px-2 text-center"></p>
         </div>
         <div class="d-flex justify-content-center">
         <%= f.submit class:"btn btn-primary" %>
