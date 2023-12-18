@@ -14,7 +14,7 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user = current_user
     @booking.teapot = @teapot
-    @booking.status = "pending"
+    @booking.status = "Pending"
     @booking.total_price = (@booking.end_date - @booking.start_date) * @teapot.price_per_day
     if @booking.save!
       redirect_to booking_path(@booking)
@@ -29,6 +29,18 @@ class BookingsController < ApplicationController
     redirect_to bookings_path, status: :see_other
   end
 
+  def accept
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "Accepted")
+    redirect_to booking_path(@booking)
+  end
+
+  def reject
+    @booking = Booking.find(params[:id])
+    @booking.update(status: "Rejected")
+    redirect_to booking_path(@booking)
+  end
+
   private
 
   def set_teapot
@@ -36,6 +48,6 @@ class BookingsController < ApplicationController
   end
 
   def booking_params
-    params.require(:booking).permit(:start_date, :end_date)
+    params.require(:booking).permit(:start_date, :end_date, :status)
   end
 end

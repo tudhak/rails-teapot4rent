@@ -1,4 +1,4 @@
-<div class="container my-4 mx-auto">
+<div class="container my-5 mx-auto">
 
 <div class="accordion" id="dashboardAccordion">
   <div class="accordion-item">
@@ -12,14 +12,14 @@
         <%= link_to booking_path(booking), class:"text-decoration-none standard-title" do %>
           <div class="accordion-body d-flex justify-content-between align-items-center booking-card">
             <p class="m-0 flex-shrink-0" style="width: 300px;"><i class="fa-solid fa-mug-hot "></i> <%= booking.teapot.style %></p>
-            <p class="m-0"><i class="fa-solid fa-calendar-days"></i> <%= booking.start_date.strftime("%d %b %Y") %> / <%= booking.end_date.strftime("%d %b %Y") %></p>
-            <p class="m-0"><i class="fa-solid fa-euro-sign"></i> <%= booking.total_price.round %></p>
-            <% if booking.status == "pending" %>
-              <p class="m-0 bg-warning p-2 text-white rounded"><%= booking.status %></p>
-            <% elsif booking.status == "accepted" %>
-              <p class="m-0 bg-success p-2 text-white rounded"><%= booking.status %></p>
-            <% elsif booking.status == "rejected" %>
-              <p class="m-0 bg-danger p-2 text-white rounded"><%= booking.status %></p>
+            <p class="m-0 flex-shrink-0"><i class="fa-solid fa-calendar-days"></i> <%= booking.start_date.strftime("%d %b %Y") %> / <%= booking.end_date.strftime("%d %b %Y") %></p>
+            <p class="m-0 flex-shrink-0"><i class="fa-solid fa-euro-sign"></i> <%= booking.total_price.round %></p>
+            <% if booking.status == "Pending" %>
+              <p class="m-0 bg-warning p-2 text-white rounded flex-shrink-0 text-center" style="width: 95px;"><%= booking.status %></p>
+            <% elsif booking.status == "Accepted" %>
+              <p class="m-0 bg-success p-2 text-white rounded flex-shrink-0 text-center" style="width: 95px;"><%= booking.status %></p>
+            <% elsif booking.status == "Rejected" %>
+              <p class="m-0 bg-danger p-2 text-white rounded flex-shrink-0 text-center" style="width: 95px;"><%= booking.status %></p>
             <% end %>
           </div>
         <% end %>
@@ -39,12 +39,12 @@
             <p class="m-0 flex-shrink-0" style="width: 300px;"><i class="fa-solid fa-mug-hot "></i> <%= booked_teapot.teapot.style %></p>
             <p class="m-0"><i class="fa-solid fa-calendar-days"></i> <%= booked_teapot.start_date.strftime("%d %b %Y") %> / <%= booked_teapot.end_date.strftime("%d %b %Y") %></p>
             <p class="m-0"><i class="fa-solid fa-euro-sign"></i> <%= booked_teapot.total_price.round %></p>
-            <% if booked_teapotg.status == "pending" %>
-              <p class="m-0 bg-warning p-2 text-white rounded"><%= booked_teapot.status %></p>
-            <% elsif booked_teapot.status == "accepted" %>
-              <p class="m-0 bg-success p-2 text-white rounded"><%= booked_teapot.status %></p>
-            <% elsif booked_teapot.status == "rejected" %>
-              <p class="m-0 bg-danger p-2 text-white rounded"><%= booked_teapot.status %></p>
+            <% if booked_teapot.status == "Pending" %>
+              <p class="m-0 bg-warning p-2 text-white rounded flex-shrink-0 text-center" style="width: 95px;"><%= booked_teapot.status %></p>
+            <% elsif booked_teapot.status == "Accepted" %>
+              <p class="m-0 bg-success p-2 text-white rounded flex-shrink-0 text-center" style="width: 95px;"><%= booked_teapot.status %></p>
+            <% elsif booked_teapot.status == "Rejected" %>
+              <p class="m-0 bg-danger p-2 text-white rounded flex-shrink-0 text-center" style="width: 95px;"><%= booked_teapot.status %></p>
             <% end %>
           </div>
         <% end %>
