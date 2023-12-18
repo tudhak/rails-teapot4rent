@@ -22,3 +22,13 @@
 .footer-links a:hover {
   opacity: 1;
 }
+
+@media(max-width: 576px) {
+  .footer-copyright {
+    display: none;
+  }
+
+  .footer {
+    justify-content: center;
+  }
+}
