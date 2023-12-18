@@ -1,8 +1,18 @@
 class TeapotsController < ApplicationController
   before_action :set_teapot, only: [:show, :edit, :update, :destroy]
+  skip_before_action :authenticate_user!, only: [:index]
 
   def index
     @teapots = Teapot.where(user: current_user)
+
+    @all_teapots = Teapot.all # Attention aux requêtes N+1
+    if params[:query].present?
+      sql_subquery = <<~SQL
+        teapots.style @@ :query
+        OR teapots.description @@ :query
+      SQL
+      @all_teapots = @all_teapots.where(sql_subquery, query: params[:query])
+    end
   end
 
   def show
