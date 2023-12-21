@@ -27,8 +27,9 @@ class TeapotsController < ApplicationController
     @teapot = Teapot.new(teapot_params)
     @teapot.user = current_user
     if @teapot.save
-      redirect_to teapot_path(@teapot)
+      redirect_to teapot_path(@teapot), notice: "New teapot successfully created !"
     else
+      flash[:alert] = "Fields incorrectly completed. Please check."
       render :new, status: :unprocessable_entity
     end
   end
